@@ -1,0 +1,39 @@
+pipeline:
+  name: angular_firebase_dev
+  identifier: angular_firebase_dev
+  projectIdentifier: Harness_Migration_Prjct
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: ang_firebase_connector
+        build: <+input>
+  stages:
+    - stage:
+        name: compile
+        identifier: compile
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: compile
+                  identifier: compile
+                  spec:
+                    shell: Sh
+                    command: echo ' this is test'
